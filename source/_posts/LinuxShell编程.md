@@ -1,0 +1,357 @@
+# Linux SHELL编程
+
+## SHELL简介
+
+- Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。Shell 既是一种命令语言，又是一种程序设计语言。
+
+- Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。
+
+### 脚本的建立
+
+打开文本编辑器(可以使用 vi/vim 命令来创建文件)，新建一个文件 test.sh，扩展名为 sh（sh代表shell）
+
+下面为一个简单的脚本例子：
+
+        #!/bin/bash
+        echo "Hello World!"
+
+**#!**是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。
+
+echo 命令用于向窗口输出文本。
+
+### 脚本的运行
+
+1. 作为可执行程序
+
+        chmod +x ./test.sh  # 使脚本具有执行权限
+        ./test.sh  # 执行脚本
+
+2. 作为解释器函数
+
+这种运行方式是，直接运行解释器，其参数就是 shell 脚本的文件名，如：
+
+        /bin/sh test.sh
+
+
+### 环境变量和用户变量
+
+- shell变量可以分为两大类型：环境变量和用户定义变量。自定义变量只能在当前shell环境中生效，环境变量在整个主机的shell环境中生效。
+
+- 环境变量用来定制你的shell的运行环境，保证shell命令的正确执行。
+
+- 这些变量大多数在/etc/profile文件中初始化，而/etc/profile是在用户登录的时候执行的。
+
+- 使用set命令查看变量
+
+- 使用unset+变量名可以删除用户变量
+
+- PATH --> 决定了shell将到哪些目录中寻找命令或程序
+- HOME --> 当前用户主目录
+- HISTSIZE --> 历史记录数
+- LOGNAME --> 当前用户的登录名 
+- HOSTNAME --> 指主机的名称
+- SHELL --> 前用户Shell类型 
+- LANGUGE --> 语言相关的环境变量，多语言可以修改此环境变量
+- MAIL --> 当前用户的邮件存放目录 
+- PS1 --> 基本提示符，对于root用户是#，对于普通用户是$
+- PS2 --> 附属提示符，默认是“>”
+
+### 变量的声明
+
+- bash不一定要声明变量，但有些特殊类型的变量必须要声明。
+
+- 命令语法：
+ 
+        declare [options] [name[=value]]
+        typeset [options] [name[=value]]
+
+- 常用选项：
+
+        -a     声明“name”是一个数组
+        -f     声明“name”是一个函数
+        -i     声明“name”是一个整数
+        -r     声明“name”是只读的变量
+        -x    表示每一个“name”变量都可以被子进程访问到，称为全局变量
+
+
+- 例
+
+        [root@localhost root]# declare –i age=20
+        [root@localhost root]# declare –rx OS=LINUX
+        [root@localhost root]# declare –i
+            显示所有整型变量；
+        [root@localhost root]# declare –x
+        显示所有全局变量；
+
+### 变量的赋值
+
+- 格式：变量名=值
+- **注意：必须保证等号(=)前后没有空格**。
+- 例：
+
+        x=6
+        a="hello world"
+
+### 变量的引用
+
+- 在shell中，可以通过在变量名前加一个$符号来访问它的内容。如： 
+
+        a="hello world"
+        echo "A is: $a"
+
+- 一个变量给另一个变量赋值可以写成：
+
+    	变量2=$变量1
+        x=$i
+
+- 单引号、双引号和反斜杠的使用
+
+ 使用双引号可引用除字符$、`(反引号)、\外的任意字符或字符串。对大多数的元字符（包括*）都将按字面意思处理。
+ 
+ 如果用双引号（“”）将值括起来，则允许使用$符对变量进行替换。字符串通常都被放在双引号中，以防止它们被空白字符分开。 
+
+ 如果用单引号‘’将值括起来，则不允许有变量替换，而不对它做shell解释。
+ 
+ 反斜杠（\）用来去除某些字符的特殊含义并把它们按字面意思处理，其中就包括$。
+
+- 实例
+
+    ![实例](http://m.qpic.cn/psc?/V13joPtW44DvVW/rsrgZKFZ64zVoUWa4IKT.TeL.qpu8d6RUC3UheIW.TcpSAUDevxj5opHfHuLFrASYn8D5Qa9e59.fAAAVEuNBw!!/b&bo=UwJlAQAAAAADBxc!&rf=viewer_4)
+
+### 输入命令
+
+1. 可以使用read命令来将用户的输入赋值给一个shell变量中。
+   - 语法：read [options] variable-list
+   - 常用选项：
+
+        -a 	 name  把词读入到name数组中去。
+        -e  	把一整行读入到第一个变量中，其余的变量均为null。
+        -n		在输出echo后的字符串后，光标仍然停留在同一行。
+        -p   prompt   如果是从终端读入数据则显示prompt字符串。
+
+   - 读入的一行输入由许多词组成，他们是用空格（或者制表符，或shell环境变量IFS的值）分隔开的。 
+
+   - 如果这些词的数量比列出的变量的数量多，则把余下的所有词赋值给最后一个变量。如果列出的变量的数量多于输入的词的数量，这多余的变量的值被设置为null。 
+
+   - 通常情况下，在用户按下回车键时，read命令结束。
+
+   - 由于read命令提供了-p参数，允许在read命令行中直接指定一个提示。
+
+            #!/bin/bash
+            read -p "Enter your name:" name
+            echo "hello $name, welcome to my program"
+            exit 0
+
+   - 在read命令行中也可以不指定变量.如果不指定变量，那么read命令会将接收到的数据放置在环境变量REPLY中。
+
+2. 计时输入.
+
+   - 使用read命令存在着潜在危险。脚本很可能会停下来一直等待用户的输入。如果无论是否输入数据脚本都必须继续执行，那么可以使用-t选项指定一个计时器。-t选项指定read命令等待输入的秒数。当计时满时，read命令返回一个非零退出状态;
+
+            #!/bin/bash
+            if read -t 5 -p "please enter your name:" name
+            then 
+                echo "hello $name ,welcome to my script"
+            else
+                echo "sorry,too slow"
+            fi
+            exit 0
+
+3. 默读（输入不显示在监视器上）
+    - 有时会需要脚本用户输入，但不希望输入的数据显示在监视器上。典型的例子就是输入密码，当然还有很多其他需要隐藏的数据。
+    - -s选项能够使read命令中输入的数据不显示在监视器上（实际上，数据是显示的，只是 read命令将文本颜色设置成与背景相同的颜色）。
+
+            #!/bin/bash
+            read  -s  -p "Enter your password:" pass
+            echo "your password is $pass"
+            exit 0 
+
+![example](http://m.qpic.cn/psc?/V13joPtW44DvVW/rsrgZKFZ64zVoUWa4IKT.S7UPIyUerIvw.i9VIrfsM9G5ZH6yC0M68J6OU50YiJWz9*jWODNXAv6z4CIh7hSow!!/b&bo=eQJ7AQAAAAADByM!&rf=viewer_4)
+
+### echo命令
+
+- echo命令的功能是在显示器上显示一段文字，一般起到一个提示的作用。
+- 该命令的一般格式为：
+
+        echo [-ne][字符串]或 echo [--help][--version]
+
+- 说明：echo会将输入的字符串送往标准输出。输出的字符串间以空白字符隔开, 并在最后加上换行号。
+
+- 参数：-n 不要在最后自动换行
+
+- -e 若字符串中出现以下字符，则特别加以处理，而不会将它当成一般文字输出：
+
+           \a 发出警告声；
+           \b 删除前一个字符；
+           \c 最后不加上换行符号；
+           \f 换行但光标仍旧停留在原来的位置；
+           \n 换行且光标移至行首；
+           \r 光标移至行首，但不换行；
+           \t 插入tab；
+           \v 与\f相同；
+           \\ 插入\字符；
+           \nnn 插入nnn（八进制）所代表的ASCII字符；
+
+- 例
+
+        $ echo -e "a\tb\tc\nd\te\tf"
+        a       b       c
+        d       e       f
+    上例运用 \t 来区隔 abc 还有 def ，以及用 \n 将 def 换至下一行。
+
+        $ echo -ne "a\tb\tc\nd\te\bf\a"
+        a       b       c
+        d       f  
+    因为 e 字母后面是删除键（\b），因此输入结果就没有e了。
+
+### 算数比较
+
+运算符号 | 含义
+-|-|-
+-eq | 等于
+-ge | 大于等于 
+-le | 小于等于 
+-ne | 不等于
+-gt | 大于
+-lt | 小于
+
+### if语句
+
+- 语句结构
+
+    ![example](http://m.qpic.cn/psc?/V13joPtW44DvVW/rsrgZKFZ64zVoUWa4IKT.QflpoZiuM*0f*2EHgKLu.G*w7yrLTynq*1GGJRhP6x56i6YOt6vi1opmvhsXiJOig!!/b&bo=1AGCAdQBggEDCSw!&rf=viewer_4)
+
+### for语句
+
+- 语法：
+
+        for 变量 in 列表
+            do
+            操作
+            done
+- 例
+
+    ![example](http://m.qpic.cn/psc?/V13joPtW44DvVW/rsrgZKFZ64zVoUWa4IKT.RnAPmTJFEP.eqcHqCQJ4.3Fm1AUUMW8Jj0jDyLdVDrcM5vUuWA.QdFgQKgbgPN32A!!/b&bo=mwKFAQAAAAADBz8!&rf=viewer_4)
+
+### while语句
+
+- 语法：
+
+        while 表达式
+        do
+            操作
+        done
+- 例
+
+  ![example](http://m.qpic.cn/psc?/V13joPtW44DvVW/rsrgZKFZ64zVoUWa4IKT.Vr3oreNydy22tL62iLqlQRSvz4b7QDEwRtmaEYobBRrJvdsVjAxZ7CUKQHds37lvg!!/b&bo=BwKQAQAAAAADB7Y!&rf=viewer_4)
+
+### until语句
+
+- 语法
+  
+    until 表达式
+    do
+    操作
+    done
+- 例
+
+    ![example](http://m.qpic.cn/psc?/V13joPtW44DvVW/rsrgZKFZ64zVoUWa4IKT.Xg3fIoY2EMexhD72jNR7kkXqSiOQ1.oCZdIAwtBUswQm0YuLj9zXxLf35ogX.YS7Q!!/b&bo=uAGMAQAAAAADBxY!&rf=viewer_4)
+
+### case语句
+
+- 语法
+
+        case 字符串 in
+        值1|值2)  操作
+            ;;
+        值3|值4)  操作
+            ;;
+        …
+        值5|值6)   操作
+        ;;
+        esac
+
+- 例
+
+    ![example](http://m.qpic.cn/psc?/V13joPtW44DvVW/rsrgZKFZ64zVoUWa4IKT.Qw1JDoVjnzWzcnYLKRQYF1gmeenJykxqQ6rwkUli1AUUoZXmf*.u7tosQ0fepyuOA!!/b&bo=XgKrAQAAAAADB9Q!&rf=viewer_4)
+
+### break和continue语句
+
+- break命令使得程序跳出for、while、until循环，执行done后面的语句，这样就永久终止了循环。
+
+- continue命令使得程序跳到done，这使得循环条件被再次求值，从而开始新的一次循环，循环变量取循环列表中的下一个值。
+
+- 无论哪种情况，循环体中在这两条命令后的语句都没有执行。
+
+- break命令和continue命令常作为条件语句的一部分来使用。
+
+### let命令
+
+- let可以用来计算算术表达式的值。如果表达式中有空格或者特殊字符，则应将表达式括在双引号中。
+
+- 命令语法：let express-list
+
+- 如果最后的表达式取值为0，let命令返回1；否则返回0。
+
+- 例
+
+        [root@localhost root]# let “x=6” “y = 9”“z = 16”
+        [root@localhost root]# let t=x+y
+        [root@localhost root]# echo “t= $t”
+        t= 15
+        [root@localhost root]# let A=2**x B=y*z 
+        [root@localhost root]# echo “A=$A    B=$B”
+        A=64     B=144
+
+### $((expression))扩展
+
+- 命令语法：$((expression))
+
+- shell计算expression并用其计算结果代替$((expression))。这个语法类似于命令替换所用的语法“$(...)”，并将执行相同的功能。可将$((expression))作为参数传递给命令或者放置在命令行上任何数字位置上。 
+
+- 不需要在expression中的变量名称前加上$符号。
+
+- 例
+  
+        #!/bin/bash 
+        echo -n "How old are you? " 
+        read age 
+        echo "Wow, in $((100-age)) years, you'll be 100! " 
+
+        [root@localhost root]# age_check 
+        How old are you? 20
+        Wow, in 80 years, you'll be 100! 
+
+### expr命令
+
+- expr命令将它的参数当作一个表达式来求值。
+
+- 命令语法：expr args
+
+- 功能：计算表达式的参数‘args’的值，并返回它的值到标准输出。
+
+- 常见用法：x=`expr $x + 1`
+
+- 反引号(\`\`)字符使x取值为命令expr $x + 1的执行结果。
+也可以用语法$()替换反引号\`\`。
+
+- 例
+  
+        [root@localhost root]# a1=5
+        [root@localhost root]# a1=$( expr $a1 + 1 )
+        [root@localhost root]# echo $var1
+        6
+        [root@localhost root]# var1=$( expr $a1 \* $a1 )
+        [root@localhost root]# echo $a1
+        36
+        [root@localhost root]# echo $( expr $a1 / 4 )
+        9
+        [root@localhost root]# echo $( expr $var1 % 10 )
+        6
+
+## 参考资料
+
+[SHELL学习](https://www.runoob.com/linux/linux-shell.html)
+
+**Shell编程.ppt**
+

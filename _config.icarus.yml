@@ -217,11 +217,11 @@ widgets:
         position: left
         type: profile
         # Author name
-        author: Your name
+        author: Yzdong
         # Author title
-        author_title: Your title
+        author_title: Keep Running!
         # Author's current location
-        location: Your location
+        location: China
         # URL or path to the avatar image
         avatar: 
         # Whether show the rounded avatar image
@@ -234,7 +234,7 @@ widgets:
         social_links:
             Github:
                 icon: fab fa-github
-                url: 'https://github.com/ppoffice'
+                url: 'https://github.com/zed-y'
             Facebook:
                 icon: fab fa-facebook
                 url: 'https://facebook.com'
