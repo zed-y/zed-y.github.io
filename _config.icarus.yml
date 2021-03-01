@@ -132,7 +132,7 @@ article:
         # Show copy code button
         clipboard: true
         # Default folding status of the code blocks. Can be "", "folded", "unfolded"
-        fold: unfolded
+        fold: folded
     # Whether to show estimated article reading time
     readtime: true
     # Article licensing block
@@ -214,7 +214,7 @@ widgets:
     # Profile widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: profile
         # Author name
         author: Yzdong
@@ -223,13 +223,13 @@ widgets:
         # Author's current location
         location: China
         # URL or path to the avatar image
-        avatar: 
+        avatar: https://octodex.github.com/images/grinchtocat.gif
         # Whether show the rounded avatar image
-        avatar_rounded: false
+        avatar_rounded: true
         # Email address for the Gravatar
         gravatar: 
         # URL or path for the follow button
-        follow_link: 'https://github.com/ppoffice'
+        follow_link: 'https://github.com/zed-y'
         # Links to be shown on the bottom of the profile widget
         social_links:
             Github:
@@ -244,9 +244,6 @@ widgets:
             Dribbble:
                 icon: fab fa-dribbble
                 url: 'https://dribbble.com'
-            RSS:
-                icon: fas fa-rss
-                url: /
     # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
@@ -261,7 +258,7 @@ widgets:
     # Recommendation links widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: links
         # Names and URLs of the sites
         links:

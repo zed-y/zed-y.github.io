@@ -1,5 +1,9 @@
 ---
 title: Linux SHELL编程
+tags: 
+- Linux
+toc: true
+cover: /gallery/covers/view1.jpg
 ---
 ## SHELL简介
 
