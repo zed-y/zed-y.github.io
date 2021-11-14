@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Hexo O</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo O"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo O"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Docker的使用与基本操作Dokcer 安装环境 Linux Ubuntu version 20.04 Docker 19.03v.10  Docker 安装 安装 apt 依赖包，用于通过HTTPS来获取仓库:  $ sudo apt-get install \      apt-transport-https \      ca-certificates \      curl \"><meta property="og:type" content="blog"><meta property="og:title" content="Hexo O"><meta property="og:url" content="https://zed-y.github.io/2021/11/14/Docker%E4%B9%8B%E6%88%91%E8%A7%81/"><meta property="og:site_name" content="Hexo O"><meta property="og:description" content="Docker的使用与基本操作Dokcer 安装环境 Linux Ubuntu version 20.04 Docker 19.03v.10  Docker 安装 安装 apt 依赖包，用于通过HTTPS来获取仓库:  $ sudo apt-get install \      apt-transport-https \      ca-certificates \      curl \"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDT2wQ.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTgeg.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTsQf.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDT6OS.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTfFs.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTyy8.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTRoj.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDThYn.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDT4Wq.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTIS0.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTolV.md.png"><meta property="og:image" content="https://s1.ax1x.com/2020/06/05/tDTTyT.md.png"><meta property="article:published_time" content="2021-11-14T12:35:32.476Z"><meta property="article:modified_time" content="2021-11-14T12:35:32.476Z"><meta property="article:author" content="Yzdong"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s1.ax1x.com/2020/06/05/tDT2wQ.md.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://zed-y.github.io/2021/11/14/Docker%E4%B9%8B%E6%88%91%E8%A7%81/"},"headline":"Hexo O","image":["https://s1.ax1x.com/2020/06/05/tDT2wQ.md.png","https://s1.ax1x.com/2020/06/05/tDTgeg.md.png","https://s1.ax1x.com/2020/06/05/tDTsQf.md.png","https://s1.ax1x.com/2020/06/05/tDT6OS.md.png","https://s1.ax1x.com/2020/06/05/tDTfFs.md.png","https://s1.ax1x.com/2020/06/05/tDTyy8.md.png","https://s1.ax1x.com/2020/06/05/tDTRoj.md.png","https://s1.ax1x.com/2020/06/05/tDThYn.md.png","https://s1.ax1x.com/2020/06/05/tDT4Wq.md.png","https://s1.ax1x.com/2020/06/05/tDTIS0.md.png","https://s1.ax1x.com/2020/06/05/tDTolV.md.png","https://s1.ax1x.com/2020/06/05/tDTTyT.md.png"],"datePublished":"2021-11-14T12:35:32.476Z","dateModified":"2021-11-14T12:35:32.476Z","author":{"@type":"Person","name":"Yzdong"},"description":"Docker的使用与基本操作Dokcer 安装环境 Linux Ubuntu version 20.04 Docker 19.03v.10  Docker 安装 安装 apt 依赖包，用于通过HTTPS来获取仓库:  $ sudo apt-get install \\      apt-transport-https \\      ca-certificates \\      curl \\"}</script><link rel="canonical" href="https://zed-y.github.io/2021/11/14/Docker%E4%B9%8B%E6%88%91%E8%A7%81/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo O" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-11-14T12:35:32.476Z" title="11/14/2021, 12:35:32 PM">2021-11-14</time>发表</span><span class="level-item"><time dateTime="2021-11-14T12:35:32.476Z" title="11/14/2021, 12:35:32 PM">2021-11-14</time>更新</span><span class="level-item">13 分钟读完 (大约1988个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"> </h1><div class="content"><h1 id="Docker的使用与基本操作"><a href="#Docker的使用与基本操作" class="headerlink" title="Docker的使用与基本操作"></a>Docker的使用与基本操作</h1><h2 id="Dokcer-安装环境"><a href="#Dokcer-安装环境" class="headerlink" title="Dokcer 安装环境"></a>Dokcer 安装环境</h2><ul>
+<li>Linux Ubuntu version 20.04</li>
+<li>Docker 19.03v.10</li>
+</ul>
+<h2 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h2><ol>
+<li><p>安装 apt 依赖包，用于通过HTTPS来获取仓库:</p>
+<pre><code> $ sudo apt-get install \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg-agent \
+     software-properties-common
+</code></pre>
+</li>
+<li><p>添加 Docker 的官方 GPG 密钥：</p>
+<pre><code> $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre>
+</li>
+<li><p>9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88 通过搜索指纹的后8个字符，验证您现在是否拥有带有指纹的密钥。</p>
+<pre><code> $ sudo apt-key fingerprint 0EBFCD88
+ 
+ pub   rsa4096 2017-02-22 [SCEA]
+     9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+ uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;
+ sub   rsa4096 2017-02-22 [S]
+</code></pre>
+</li>
+<li><p>使用以下指令设置稳定版仓库</p>
+<pre><code> $ sudo add-apt-repository \
+ &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+ $(lsb_release -cs) \
+ stable&quot;
+</code></pre>
+</li>
+<li><p>安装最新版本的 Docker Engine-Community 和 containerd ：</p>
+<pre><code> $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre>
+</li>
+<li><p>测试 Docker 是否安装成功，输入以下指令，打印出以下信息则安装成功:</p>
+<pre><code> $ sudo docker run hello-world
+
+ Unable to find image &#39;hello-world:latest&#39; locally
+ latest: Pulling from library/hello-world
+ 1b930d010525: Pull complete                                                                                                                                  Digest: sha256:c3b4ada4687bbaa170745b3e4dd8ac3f194ca95b2d0518b417fb47e5879d9b5f
+ Status: Downloaded newer image for hello-world:latest
+</code></pre>
+</li>
+</ol>
+<pre><code>    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
+
+
+    To generate this message, Docker took the following steps:
+    1. The Docker client contacted the Docker daemon.
+    2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+        (amd64)
+    3. The Docker daemon created a new container from that image which runs the
+        executable that produces the output you are currently reading.
+    4. The Docker daemon streamed that output to the Docker client, which sent it
+        to your terminal.
+
+
+    To try something more ambitious, you can run an Ubuntu container with:
+    $ docker run -it ubuntu bash
+
+
+    Share images, automate workflows, and more with a free Docker ID:
+    https://hub.docker.com/
+
+
+    For more examples and ideas, visit:
+    https://docs.docker.com/get-started/
+</code></pre>
+<p>Docker安装完成后不能run hello-world，报错：docker: Error response from daemon: Get <a target="_blank" rel="noopener" href="https://registry-1.docker.io/v2/">https://registry-1.docker.io/v2/</a>: net/http: request canceled 的解决办法：<br>修改Docker源：</p>
+<pre><code>修改或新增 /etc/docker/daemon.json
+
+# vi /etc/docker/daemon.json
+
+&#123;
+
+&quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;]
+
+&#125;
+//保存后退出在执行下面语句
+# systemctl restart docker.service
+</code></pre>
+<ol start="7">
+<li>参考链接</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/ubuntu-docker-install.html">https://www.runoob.com/docker/ubuntu-docker-install.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/BigData_Mining/article/details/87869147">https://blog.csdn.net/BigData_Mining/article/details/87869147</a></p>
+<h2 id="Docker-使用"><a href="#Docker-使用" class="headerlink" title="Docker 使用"></a>Docker 使用</h2><p>在使用之前，为保证镜像下载速度，可以更换镜像源：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/df75f9b5fcf6">Docker 修改镜像源地址</a></p>
+<p>Docker的基础使用语句有以下几种：拉取镜像，上传镜像，运行容器，提交镜像，保存为tar文件，加载tar文件，Dockerfile来build镜像</p>
+<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><p>Docker可以使用pull命令来拉去远程共有仓库中的镜像到本机使用，具体方法如下：</p>
+<pre><code>    root$ docker search tomcat
+</code></pre>
+<p>首先利用search来查找要获取的镜像名字</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDT2wQ.md.png" alt="docker1"></p>
+<p>然后获取自己需要的镜像，以第一个的为例：</p>
+<pre><code>    root$ docker pull tomcat
+</code></pre>
+<p>默认版本为latest，如果需要特定版本，可以加:版本号，如tomcat:8</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTgeg.md.png" alt="docker2"></p>
+<p>下载完成后，便可以查看本地仓库的镜像</p>
+<pre><code>root$ docker image ls
+</code></pre>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTsQf.md.png" alt="docker3"></p>
+<h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>当对一个官方镜像做了一个修改，成为自己的镜像后，可以选择上传到DokcerHub上，作为一个自己的独特的镜像，此处略去过程。</p>
+<h4 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h4><p>通过docker run命令来运行一个容器，例如下面这个例子。</p>
+<pre><code>root$ docker run --name Mytom -d -p 8888:8080 tomcat
+</code></pre>
+<p>上述命令中，–name为指定运行的容器的名字，方便以后管理，-d为保持后台运行，因为tomcat已启动后，便会占用此窗口来显示其日志，-p为映射端口，: 之前的端口为宿主机的端口，: 之后的端口为容器内的端口，因为容器必须要映射到主机之后才可以访问。</p>
+<p>关于dockers run的具体参数不与解释，详情见<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-run-command.html">网络资料</a></p>
+<p>运行后通过docker container ps 命令来查看当前运行容器情况，加上-a参数表示查看所有容器，包括已经停止的。</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDT6OS.md.png" alt="docker4"></p>
+<p>则会使通过浏览器访问8888端口便会发现tomcat启动成功。</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTfFs.md.png" alt="docker6"></p>
+<p>PS: 如果发现浏览器打开后报404错误，见<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40891009/article/details/103898876">解决方法</a></p>
+<h5 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h5><p>通过命令 docker exec -it 唯一标识 /bin/bash 来进入到容器的SHELL中进行操作,对容器内部来进行操作。</p>
+<p>其中 唯一标识可以是容器的ID，也可以是名字，-it表示容器的STDIN(标准输入输出)处于打开状态，同时分配给其一个伪终端。</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTyy8.md.png" alt="docker5"></p>
+<h4 id="提交镜像"><a href="#提交镜像" class="headerlink" title="提交镜像"></a>提交镜像</h4><p>该命令类比于push命令，只不过是将镜像只提交到本地的私有仓库中，一旦删除，便无法下载。</p>
+<p>如下：</p>
+<pre><code># root$ docker commit 容器的id 镜像的名字:版本号
+root$ docker commit 9f951bcb20d7 yzd/mytomcat:v1
+</code></pre>
+<p>上命令便表示将9f容器提交到yzd/mytomcat镜像，版本号为v1。</p>
+<p>commit具体参数见<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-commit-command.html">https://www.runoob.com/docker/docker-commit-command.html</a></p>
+<p>当再次查看镜像时便会发现多了一个镜像</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTRoj.md.png" alt="docker7"></p>
+<h4 id="保存与加载tar文件"><a href="#保存与加载tar文件" class="headerlink" title="保存与加载tar文件"></a>保存与加载tar文件</h4><p>保存命令：docker save -o 输出文件 镜像名字:版本号</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDThYn.md.png" alt="docker8"></p>
+<p>加载命令：docker load &lt; tar文件</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDT4Wq.md.png" alt="docker9"></p>
+<h4 id="重头戏–Dockerfile来build镜像"><a href="#重头戏–Dockerfile来build镜像" class="headerlink" title="重头戏–Dockerfile来build镜像"></a>重头戏–Dockerfile来build镜像</h4><p>指令：</p>
+<pre><code>- FROM 定制的镜像都是基于 FROM 的镜像
+- COPY 从宿主机目录中复制文件或者目录到容器里指定路径
+- ADD 与COPY命令相似，只不过ADD可以解压压缩文件，还可以从URL下载网络资源，而COPY不可以
+- WORKDIR 指定容器工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在。（WORKDIR 指定的工作目录，必须是提前创建好的）。
+- RUN 在docker build 时执行后面的命令
+- CMD 在docker run 时运行执行后面的命令
+- ENTYRYPOINT 允许您配置将作为可执行文件运行的容器。它看起来类似于CMD，因为它还允许您使用参数指定命令。区别在于当Docker容器使用命令行参数运行时，ENTRYPOINT命令不会忽略参数。
+</code></pre>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTIS0.md.png" alt="docker10"></p>
+<pre><code>- EXPOSE 声明镜像暴露出来的端口
+- VOLUME 定义匿名数据卷。在启动容器时忘记挂载数据卷，会自动挂载到匿名卷。(不常用)
+- ENV 设置环境变量，定义了环境变量，那么在后续的指令中，就可以使用这个环境变量。
+- ARG 设置的环境变量仅对 Dockerfile 内有效，也就是说只有 docker build 的过程中有效。
+- ONBUILD 用于延迟构建命令的执行。简单的说，就是 Dockerfile 里用 ONBUILD 指定的命令，在本次构建镜像的过程中不会执行（假设镜像为 test-build）。当有新的 Dockerfile 使用了之前构建的镜像 FROM test-build ，这是执行新镜像的 Dockerfile 构建时候，会执行 test-build 的 Dockerfile 里的 ONBUILD 指定的命令。
+</code></pre>
+<p>Dockersfile具体指令可以见<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-dockerfile.html">菜鸟教程</a>或<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">官方文档</a></p>
+<p>一个例子：</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTolV.md.png" alt="docker11"></p>
+<p>然后进行构建与运行</p>
+<p><img src="https://s1.ax1x.com/2020/06/05/tDTTyT.md.png" alt="docker12"></p>
+<p>可以看到1.txt中的内容变为了2020，说明执行了RUN命令修改了其中的内容。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p><a href="https://zed-y.github.io/2021/11/14/Docker之我见/">https://zed-y.github.io/2021/11/14/Docker之我见/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Yzdong</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-11-14</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-11-14</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/14/LinuxShell%E7%BC%96%E7%A8%8B/"><span class="level-item">Linux SHELL编程</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/test/"><span class="level-start"><span class="level-item">test</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-14T12:35:32.476Z">2021-11-14</time></p><p class="title"><a href="/2021/11/14/Docker%E4%B9%8B%E6%88%91%E8%A7%81/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-14T12:35:32.476Z">2021-11-14</time></p><p class="title"><a href="/2021/11/14/LinuxShell%E7%BC%96%E7%A8%8B/">Linux SHELL编程</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-14T12:35:32.476Z">2021-11-14</time></p><p class="title"><a href="/2021/11/14/hello-world/">Hello World test</a></p><p class="categories"><a href="/categories/test/">test</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/fresh/"><span class="tag">fresh</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://octodex.github.com/images/grinchtocat.gif" alt="Yzdong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Yzdong</p><p class="is-size-6 is-block">Keep Running!</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">1</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">2</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/zed-y" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/zed-y"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo O" height="28"></a><p class="is-size-7"><span>&copy; 2021 Yzdong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'folded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
