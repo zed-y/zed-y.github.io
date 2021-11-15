@@ -3,11 +3,11 @@ version: 4.0.0
 # Icarus theme variant, can be "default" or "cyberpunk"
 variant: default
 # Path or URL to the website's logo
-logo: /img/logo.svg
+logo: /img/logo1.svg
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: /img/favicon.svg
+    favicon: /img/favicon1.svg
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
@@ -158,39 +158,39 @@ comment:
     shortname: 'yzdong'
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
-donates:
-    # "Afdian.net" donate button configurations
-    -
-        type: afdian
-        # URL to the "Afdian.net" personal page
-        url: ''
-    # Alipay donate button configurations
-    -
-        type: alipay
-        # Alipay qrcode image URL
-        qrcode: 'https://qr.alipay.com/fkx17032qe5hn3vcpowbr44'
-    # "Buy me a coffee" donate button configurations
-    -
-        type: buymeacoffee
-        # URL to the "Buy me a coffee" page
-        url: ''
-    # Patreon donate button configurations
-    -
-        type: patreon
-        # URL to the Patreon page
-        url: ''
-    # Paypal donate button configurations
-    -
-        type: paypal
-        # Paypal business ID or email address
-        business: ''
-        # Currency code
-        currency_code: USD
-    # Wechat donate button configurations
-    -
-        type: wechat
-        # Wechat qrcode image URL
-        qrcode: ''
+# donates:
+#     # "Afdian.net" donate button configurations
+#     -
+#         type: afdian
+#         # URL to the "Afdian.net" personal page
+#         url: ''
+#     # Alipay donate button configurations
+#     -
+#         type: alipay
+#         # Alipay qrcode image URL
+#         qrcode: 'https://qr.alipay.com/fkx17032qe5hn3vcpowbr44'
+#     # "Buy me a coffee" donate button configurations
+#     -
+#         type: buymeacoffee
+#         # URL to the "Buy me a coffee" page
+#         url: ''
+#     # Patreon donate button configurations
+#     -
+#         type: patreon
+#         # URL to the Patreon page
+#         url: ''
+#     # Paypal donate button configurations
+#     -
+#         type: paypal
+#         # Paypal business ID or email address
+#         business: ''
+#         # Currency code
+#         currency_code: USD
+#     # Wechat donate button configurations
+#     -
+#         type: wechat
+#         # Wechat qrcode image URL
+#         qrcode: ''
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
 share:
@@ -235,12 +235,12 @@ widgets:
             Github:
                 icon: fab fa-github
                 url: 'https://github.com/zed-y'
-            Facebook:
-                icon: fab fa-facebook
-                url: 'https://facebook.com'
-            Twitter:
-                icon: fab fa-twitter
-                url: 'https://twitter.com'
+            QQ:
+                icon: fa fa-qq
+                url: 'http://wpa.qq.com/msgrd?v=3&uin=1845338475&site=qq&menu=yes'
+            Bilibili:
+                icon: bilifont bili-icon_dingdao_zhuzhan
+                url: 'https://space.bilibili.com/93616101'
             # Dribbble:
             #     icon: fab fa-dribbble
             #     url: 'https://dribbble.com'
@@ -262,8 +262,8 @@ widgets:
         type: links
         # Names and URLs of the sites
         links:
-            Hexo: 'https://hexo.io'
-            Bulma: 'https://bulma.io'
+            Mikutools: 'https://tools.miku.ac/'
+            Videos: 'https://anee.cc/'
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
