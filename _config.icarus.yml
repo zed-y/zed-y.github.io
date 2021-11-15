@@ -155,7 +155,7 @@ search:
 comment:
     type: disqus
     # Disqus shortname
-    shortname: ''
+    shortname: 'yzdong'
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 donates:
@@ -168,7 +168,7 @@ donates:
     -
         type: alipay
         # Alipay qrcode image URL
-        qrcode: ''
+        qrcode: 'https://qr.alipay.com/fkx17032qe5hn3vcpowbr44'
     # "Buy me a coffee" donate button configurations
     -
         type: buymeacoffee
@@ -194,9 +194,9 @@ donates:
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
 share:
-    type: sharethis
+    type: addthis
     # URL to the ShareThis share plugin script
-    install_url: ''
+    install_url: '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-619217aad6a1d48d'
 # Sidebar configurations.
 # Please be noted that a sidebar is only visible when it has at least one widget
 sidebar:
@@ -241,9 +241,9 @@ widgets:
             Twitter:
                 icon: fab fa-twitter
                 url: 'https://twitter.com'
-            Dribbble:
-                icon: fab fa-dribbble
-                url: 'https://dribbble.com'
+            # Dribbble:
+            #     icon: fab fa-dribbble
+            #     url: 'https://dribbble.com'
     # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
@@ -313,7 +313,7 @@ plugins:
     # https://tongji.baidu.com
     baidu_analytics:
         # Baidu Analytics tracking ID
-        tracking_id: 
+        tracking_id: 1cd526c1c01f2d89b267f7b303a4ece9
     # Bing Webmaster Tools plugin settings
     # https://www.bing.com/toolbox/webmaster/
     bing_webmaster:
