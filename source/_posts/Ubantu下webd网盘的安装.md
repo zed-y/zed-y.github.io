@@ -1,16 +1,10 @@
-\---
-
+---
 title: Ubantu下webd网盘的安装
-
 toc: True
-
 tag: webd, 网盘
-
 category: Linux
-
 date: 2021-12-07
-
-\---
+---
 
 # Ubantu下webd网盘的安装
 
